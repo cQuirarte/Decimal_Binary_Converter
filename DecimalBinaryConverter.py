@@ -3,23 +3,24 @@
 # The purpose of this program is to help network administrators
 
 
-def convert():
+def convert(value1):
     list1 = list()  # create an empty list
     iter = True     # used for iteration
 
-    # Get user input
-    while (iter):
-        # Exception handling. User must enter numbers (int) and not letters (char/string)
-        try:
-            value1 = int(input("\nDecimal Value: "))  # get user input
-            if (value1 > 255):
-                print ("Enter a value less than 255 and greater than 0")
-            elif (value1 < 0):
-                print ("Enter a value less than 255 and greater than 0")
-            else:
-                iter = False
-        except:
-            print ("Please enter a number!")
+    # checkuserinput should take care of this part
+    # # Get user input
+    # while (iter):
+    #     # Exception handling. User must enter numbers (int) and not letters (char/string)
+    #     try:
+    #         value1 = int(input("\nDecimal Value: "))  # get user input
+    #         if (value1 > 255):
+    #             print ("Enter a value less than 255 and greater than 0")
+    #         elif (value1 < 0):
+    #             print ("Enter a value less than 255 and greater than 0")
+    #         else:
+    #             iter = False
+    #     except:
+    #         print ("Please enter a number!")
 
     val1 = value1 # copy value1 content to val1
 
@@ -34,20 +35,16 @@ def convert():
     # Ensures that there are 8 total bits
     while (len(list1) < 8):
         list1.append(0)
+    # Call on function to display binary conversion
+    displayBinary(list1)
 
-    ####  Should make this into a function to display
-    # Prints the values in reversed order, as it should be
+
+# Prints the values in reversed order, as it should be
+def displayBinary(fullList):
     print ("Binary Value: " , end='')
-    for item in reversed(list1):
+    for item in reversed(fullList):
         print(item, end='')
     print ("\n")
-
-    # # Ask user to run again
-    # again1 = input("Convert another value? (enter yes/no) ")
-    # if (again1 == "yes"):
-    #     convert()           # Call on the function again to convert another value
-    # elif (again1 == "no"):
-    #     print ("Program ended")
 
 
 # Function to ensure user enters the appropriate responses i.e. "Please enter numbers not letters!"
@@ -92,6 +89,7 @@ def checkUserInput(data):
 if __name__ == "__main__":
     print ("Decimal to Binary Converter")
     runProg = True  # iterator for main program
+    iter = True     # iterator for main menu option
 
     while (runProg):
         print ("\nSelect an option")
@@ -99,25 +97,31 @@ if __name__ == "__main__":
         print ("2: Convert an entire IP address based off IPv4")
         print ("0: Exit program")
 
-        choice = int(input("\nYour choice: "))
-        if (choice == 1):
-            # convert()   # Call on convert() function
-            loop1 = True    # iterator
-            # Ask user to run the function again
-            while (loop1):
-                convert()  # Call on convert() function
-                again1 = input("Convert another value? (enter yes/no) ")    #checkuserinput #3
-                if (again1 == "yes"):
-                    continue    # just skip. keep loop1 True for reiteration
-                    # convert()  # Call on the function again to convert another value #might delete line
-                elif (again1 == "no"):
-                    loop1 = False
-                    # print("Program ended")
-        elif (choice == 2):
-            print ("2")
-            convert()
-        elif (choice == 0):
-            runProg = False # end program
+        while (iter):
+            try:
+                choice = int(input("\nYour choice: "))
+                if (choice == 1):
+                    loop1 = True    # iterator
+                    # Ask user to run the function again
+                    while (loop1):
+                        value = checkUserInput(choice)
+                        convert(value)  # Call on convert() function
+                        again1 = input("Convert another value? (enter yes/no) ")    #checkuserinput #3
+                        if (again1 == "yes"):
+                            continue    # just skip. keep loop1 True for reiteration
+                            # convert()  # Call on the function again to convert another value #might delete line
+                        elif (again1 == "no"):
+                            loop1 = False
+                            # print("Program ended")
+                elif (choice == 2):
+                    print ("2")
+                    convert()
+                elif (choice == 0):
+                    iter = False    # end loop
+                    runProg = False # end program
+            except:
+                print ("Please enter a number option!")
+
 
     print ("-- Program ended --")
 
