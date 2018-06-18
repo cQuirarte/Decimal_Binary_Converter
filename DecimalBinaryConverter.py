@@ -7,21 +7,6 @@ def convert(value1):
     list1 = list()  # create an empty list
     iter = True     # used for iteration
 
-    # checkuserinput should take care of this part
-    # # Get user input
-    # while (iter):
-    #     # Exception handling. User must enter numbers (int) and not letters (char/string)
-    #     try:
-    #         value1 = int(input("\nDecimal Value: "))  # get user input
-    #         if (value1 > 255):
-    #             print ("Enter a value less than 255 and greater than 0")
-    #         elif (value1 < 0):
-    #             print ("Enter a value less than 255 and greater than 0")
-    #         else:
-    #             iter = False
-    #     except:
-    #         print ("Please enter a number!")
-
     val1 = value1 # copy value1 content to val1
 
     # Algorithm to convert decimal to binary
@@ -81,49 +66,49 @@ def checkUserInput(data):
             elif (finalData == "no" or finalData == "No" or finalData == "NO"):
                 iter2 = False
             else:
-                print ("Please respond by either 'yes' or 'no' ")
+                print ("Please respond by either 'yes' or 'no'\n")
 
     return finalData
 
 
 if __name__ == "__main__":
     print ("Decimal to Binary Converter")
-    runProg = True  # iterator for main program
     iter = True     # iterator for main menu option
 
-    while (runProg):
-        print ("\nSelect an option")
-        print ("1: Convert a single value to binary")
-        print ("2: Convert an entire IP address based off IPv4")
-        print ("0: Exit program")
+    while (iter):
+        #   main menu
+        print("\nSelect an option")
+        print("1: Convert a single value to binary")
+        print("2: Convert an entire IP address based off IPv4")
+        print("0: Exit program")
 
-        while (iter):
-            try:
-                choice = int(input("\nYour choice: "))
-                if (choice == 1):
-                    loop1 = True    # iterator
-                    # Ask user to run the function again
-                    while (loop1):
-                        value = checkUserInput(choice)
-                        convert(value)  # Call on convert() function
-                        again1 = input("Convert another value? (enter yes/no) ")    #checkuserinput #3
-                        if (again1 == "yes"):
-                            continue    # just skip. keep loop1 True for reiteration
-                            # convert()  # Call on the function again to convert another value #might delete line
-                        elif (again1 == "no"):
-                            loop1 = False
-                            # print("Program ended")
-                elif (choice == 2):
-                    print ("2")
-                    convert()
-                elif (choice == 0):
-                    iter = False    # end loop
-                    runProg = False # end program
-            except:
-                print ("Please enter a number option!")
+        try:
+            choice = int(input("\nYour choice: "))
+            if (choice == 1):
+                loop1 = True    # iterator
+                # Ask user to run the function again
+                while (loop1):
+                    value = checkUserInput(choice)
+                    convert(value)  # Call on convert() function
+                    again1 = checkUserInput(3)
+                    # again1 = input("Convert another value? (enter yes/no) ")    #checkuserinput #might delete
+                    if (again1 == "yes"):
+                        continue    # just skip. keep loop1 True for reiteration
+                        # convert()  # Call on the function again to convert another value #might delete line
+                    elif (again1 == "no"):
+                        loop1 = False
+                        # print("Program ended")
+            elif (choice == 2):
+                print ("2")
+                convert()
+            elif (choice == 0):
+                iter = False    # end loop
+                runProg = False # end program
+        except:
+            print ("Please enter a number option!")
 
 
-    print ("-- Program ended --")
+print ("-- Program ended --")
 
 
 
