@@ -49,9 +49,21 @@ def checkUserInput(data):
                 print ("Please enter a number!")
     # Convert IP option
     elif (data == 2):
+        ipAddress = list()
         try:
             value2 = input("\nIP address: ") # get user input
-            ##### write code to use the dot as a dilimeter and convert string to int.
+            for n in value2:
+                # one for int the other for comma or space
+                try:
+                    val3 = int(n)
+                    ipAddress.append(val3)
+                except:
+                    continue
+
+# code that reuses the checkuserinput to see if values are between 0 and 255
+
+
+
         except:
             print("Please enter a valid IP address!")
     # Check that the user response is either 'yes' or 'no'
@@ -96,8 +108,7 @@ if __name__ == "__main__":
                         loop1 = False
                         # print("Program ended")
             elif (choice == 2):
-                print ("2")
-                convert()
+                checkUserInput(2)
             elif (choice == 0):
                 iter = False    # end loop
                 runProg = False # end program
