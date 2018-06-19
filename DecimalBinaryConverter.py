@@ -20,8 +20,7 @@ def convert(value1):
     # Ensures that there are 8 total bits
     while (len(list1) < 8):
         list1.append(0)
-    # Call on function to display binary conversion
-    displayBinary(list1)
+    displayBinary(list1) # Call on function to display binary conversion
 
 
 # Prints the values in reversed order, as it should be
@@ -42,10 +41,8 @@ def checkUserInput(data):
         while (iter2):
             try:
                 finalData = int(input("\nEnter Decimal Value: "))  # get user input
-                if (finalData > 255):
-                    print("Enter a value less than 255 and greater than 0!")
-                elif (finalData < 0):
-                    print("Enter a value less than 255 and greater than 0!")
+                if (finalData < 0 and finalData > 255):
+                    print("Enter a number from 0 up to 255")
                 else:
                     iter2 = False
             except:
