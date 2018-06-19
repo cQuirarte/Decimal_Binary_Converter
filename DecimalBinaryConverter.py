@@ -50,19 +50,36 @@ def checkUserInput(data):
     # Convert IP option
     elif (data == 2):
         ipAddress = list()
+        tempList = list()
+        octet = 0
+        iter3 = 0
         try:
+            while ()
+            print ("Separate each octet by space or period")
             value2 = input("\nIP address: ") # get user input
             for n in value2:
                 # one for int the other for comma or space
-                try:
-                    val3 = int(n)
-                    ipAddress.append(val3)
-                except:
-                    continue
+                # try:    ######## not done! finish
+                    # val3 = int(n)
+                if (isinstance(n, int)):
+                    tempList.append(int(n))
+                    iter3 += 1
+                elif (iter3 != 0 and (n == " " or n == ",")):
+                    octet = ''.join(tempList) # joing the numbers between the spaces into one
+                    # stop if number is not between parameters
+                    if (octet > 0 or octet < 255):
+                        ipAddress.append(octet)
+                        tempList = []   # clear the list
+                else:
+                    print ("Please follow guidelines when entering the IP address!")
+                    break
 
-# code that reuses the checkuserinput to see if values are between 0 and 255
+                if (len(ipAddress) % 8 == 0):
+                    ipAddress.append(" ")
+                # except:
+                #     print ("Please enter valid")
 
-
+# function to check if between 0 to 255
 
         except:
             print("Please enter a valid IP address!")
