@@ -30,21 +30,28 @@ def displayBinary(fullList):
         print(item, end='')
     print ("\n")
 
+# Function to check if between 0 to 255
+def betweenPar(usrNum):
+    if (usrNum < 0 and usrNum > 255):
+        return True
+    else:
+        return False
+
+
 
 # Function to ensure user enters the appropriate responses i.e. "Please enter numbers not letters!"
 def checkUserInput(data):
     # Convert single value option
     finalData = ""
     iter2 = True    # iterator
+    again3 = "" # iterator
 
     if (data == 1):
         while (iter2):
             try:
                 finalData = int(input("\nEnter Decimal Value: "))  # get user input
-                if (finalData < 0 and finalData > 255):
-                    print("Enter a number from 0 up to 255")
-                else:
-                    iter2 = False
+                # call function to check if between parameters
+                iter2 = betweenPar(finalData)
             except:
                 print ("Please enter a number!")
     # Convert IP option
@@ -53,48 +60,64 @@ def checkUserInput(data):
         tempList = list()
         octet = 0
         iter3 = 0
+        again2 = True
+
         try:
-            while ()
-            print ("Separate each octet by space or period")
-            value2 = input("\nIP address: ") # get user input
-            for n in value2:
-                # one for int the other for comma or space
-                # try:    ######## not done! finish
-                    # val3 = int(n)
-                if (isinstance(n, int)):
-                    tempList.append(int(n))
-                    iter3 += 1
-                elif (iter3 != 0 and (n == " " or n == ",")):
-                    octet = ''.join(tempList) # joing the numbers between the spaces into one
-                    # stop if number is not between parameters
-                    if (octet > 0 or octet < 255):
-                        ipAddress.append(octet)
-                        tempList = []   # clear the list
-                else:
-                    print ("Please follow guidelines when entering the IP address!")
-                    break
-
-                if (len(ipAddress) % 8 == 0):
-                    ipAddress.append(" ")
-                # except:
-                #     print ("Please enter valid")
-
-# function to check if between 0 to 255
-
+            while (again2):
+                print ("\nSeparate each octet by space or period")
+                value2 = input("\nIP address: ") # get user input
+                print ("\n", value2)
+                for n in value2:
+                    # one for int the other for comma or space
+                    # try:    ######## not done! finish
+                        # val3 = int(n)
+                    n = int(n)
+                    if (isinstance(n, int)):
+                        print ("testing")
+                        tempList.append(int(n))
+                        iter3 += 1 # might delete
+                        print (iter3)
+                    elif (iter3 != 0 and (n == " " or n == ".")):
+                        print ("testing 2")
+                        octet = ''.join(tempList) # joing the numbers between the spaces into one
+                        # if (octet > 0 or octet < 255):
+                        if (betweenPar(octet)):
+                            ipAddress.append(octet)
+                            if (len(ipAddress) < 7):    # number plus dot = 7 values
+                                tempList = []   # clear the list
+                                ipAddress.append(".")
+                            elif (len(ipAddress) == 7):
+                                displayBinary(ipAddress)
+                                break
+                        # stop if number is not between parameters
+                        else:
+                            print ("")
+                    else:
+                        print ("Please follow guidelines when entering the IP address!")
+                        break
+                print ("Convert another IP address? ")
+                again3 = checkUserInput(3)
+                # again1 = input("Convert another value? (enter yes/no) ")    #checkuserinput #might delete
+                if (again1 == "yes"):
+                    continue  # just skip. keep loop1 True for reiteration
+                elif (again1 == "no"):
+                    again2 = False
         except:
             print("Please enter a valid IP address!")
+
     # Check that the user response is either 'yes' or 'no'
     elif (data == 3):
         while (iter2):
-            finalData = input("Convert another value? (enter yes/no) ")
+            finalData = input()
+            # If answer is either yes or no then stop loop otherwise keep asking until accepted answer
             if (finalData == "yes" or finalData == "Yes" or finalData == "YES"):
                 iter2 = False
             elif (finalData == "no" or finalData == "No" or finalData == "NO"):
                 iter2 = False
             else:
                 print ("Please respond by either 'yes' or 'no'\n")
-
     return finalData
+
 
 
 if __name__ == "__main__":
@@ -116,6 +139,8 @@ if __name__ == "__main__":
                 while (loop1):
                     value = checkUserInput(choice)
                     convert(value)  # Call on convert() function
+
+                    print ("Convert another value? (enter yes/no) ", end='')
                     again1 = checkUserInput(3)
                     # again1 = input("Convert another value? (enter yes/no) ")    #checkuserinput #might delete
                     if (again1 == "yes"):
@@ -129,6 +154,8 @@ if __name__ == "__main__":
             elif (choice == 0):
                 iter = False    # end loop
                 runProg = False # end program
+            else:
+                print ("Please enter a valid choice")
         except:
             print ("Please enter a number option!")
 
