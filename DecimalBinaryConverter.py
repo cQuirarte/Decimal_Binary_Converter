@@ -70,6 +70,9 @@ def checkUserInput(data):
                 print ("\nSeparate each octet by space or period")
                 value2 = input("\nIP address: ") # get user input
                 print ("\n", value2)
+
+                # here
+
                 for n in value2:
                     # one for int the other for comma or space
                     # try:    ######## not done! finish
@@ -107,18 +110,14 @@ def checkUserInput(data):
                                 print ("testing 5")
                                 ipAddress.append(octet)
                                 print ("length ", len(ipAddress))
-                                if (len(ipAddress) < 7):  # number plus dot = 7 values
+                                if (len(ipAddress) <= 7):  # number plus dot = 7 values
                                     print ("test 6")
                                     tempList = []  # clear the list
                                     ipAddress.append(".")
                                     print ("len now is ", len(ipAddress))
-                                # elif (len(ipAddress) == 7):           ##### might delete
-                                #     print ("test 7/2")
-                                #     ipAddress.append(octet)
-                                #     print ("test 7")
-                                #     print (ipAddress)
-                                #     convert(ipAddress)
-                                #     again2 = False
+                                elif (len(ipAddress) >= 7):
+                                    print("Error 1, should not be in here. write some code here")  ###### delete after
+
                             else:
                                 print ("Please follow guidelines when entering the IP address!")
                                 break
@@ -126,6 +125,7 @@ def checkUserInput(data):
                         else:
                             print ("Please follow guidelines when entering the IP address!")
                             break
+                    print ("Error 2, should not be in here. write some code here")    ###### delete after taken care of
                 if (len(ipAddress == 6)):
                     ipAddress.append(octet)
                     print ("in here now")
