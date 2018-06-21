@@ -32,9 +32,9 @@ def displayBinary(fullList):
 
 # Function to check if between 0 to 255
 def betweenPar(usrNum):
-    if (usrNum < 0 and usrNum > 255):
+    if (usrNum >= 0 and usrNum <= 255):
         return True
-    else:
+    elif (usrNum < 0 and usrNum > 255):
         return False
 
 
@@ -61,6 +61,9 @@ def checkUserInput(data):
         octet = 0
         iter3 = 0
         again2 = True
+        oct = 0
+
+        print ("size of ipAddress " , len(ipAddress))
 
         try:
             while (again2):
@@ -93,24 +96,29 @@ def checkUserInput(data):
                             # stop if number is not between parameters
                     except:
                         if (iter3 != 0 and (n == " " or n == ".")):
-                            print ("testing 2")
+                            oct += 1
+                            print ("# end of octet ", oct)
                             # joing the numbers between the spaces into one
                             octet = "".join(str(x) for x in tempList)
-                            print ("testing 3")
+                            print ("# joined successfully")
                             octet = int(octet)
-                            print ("testing 4")
-                            print (octet)
-                            # if (octet > 0 or octet < 255):
+                            print ("The octet is: ", octet)
                             if (betweenPar(octet)):
                                 print ("testing 5")
                                 ipAddress.append(octet)
+                                print ("length ", len(ipAddress))
                                 if (len(ipAddress) < 7):  # number plus dot = 7 values
+                                    print ("test 6")
                                     tempList = []  # clear the list
                                     ipAddress.append(".")
-                                elif (len(ipAddress) == 7):
-                                    displayBinary(ipAddress)
-                                    break
-                                    #something else here to finish
+                                    print ("len now is ", len(ipAddress))
+                                # elif (len(ipAddress) == 7):           ##### might delete
+                                #     print ("test 7/2")
+                                #     ipAddress.append(octet)
+                                #     print ("test 7")
+                                #     print (ipAddress)
+                                #     convert(ipAddress)
+                                #     again2 = False
                             else:
                                 print ("Please follow guidelines when entering the IP address!")
                                 break
@@ -118,6 +126,11 @@ def checkUserInput(data):
                         else:
                             print ("Please follow guidelines when entering the IP address!")
                             break
+                if (len(ipAddress == 6)):
+                    ipAddress.append(octet)
+                    print ("in here now")
+                    convert(ipAddress)
+
                 # print ("Convert another IP address? ")
                 # if (again1 == "yes"):
                 #     again3 = checkUserInput(3)
