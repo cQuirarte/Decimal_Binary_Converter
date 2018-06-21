@@ -73,11 +73,11 @@ def checkUserInput(data):
                         # val3 = int(n)
                     try:
                         n = int(n)  # Convert string element into an int
-                        if (isinstance(n, int)):
-                            print ("testing")
-                            tempList.append(int(n))
-                            iter3 += 1 # might delete
-                            print (iter3)
+                        # if (isinstance(n, int)):  ### may delete
+                        #     print ("testing")
+                        tempList.append(str(n))
+                        iter3 += 1 # might delete
+                        print (iter3)
                             # elif (iter3 != 0 and (n == " " or n == ".")):
                             # print ("testing 2")
                             # octet = ''.join(tempList) # joing the numbers between the spaces into one
@@ -92,19 +92,32 @@ def checkUserInput(data):
                             #         break
                             # stop if number is not between parameters
                     except:
-                        print("testing 2")
-                        octet = ''.join(tempList)  # joing the numbers between the spaces into one
-                        # if (octet > 0 or octet < 255):
-                        if (betweenPar(octet)):
-                            ipAddress.append(octet)
-                            if (len(ipAddress) < 7):  # number plus dot = 7 values
-                                tempList = []  # clear the list
-                                ipAddress.append(".")
-                            elif (len(ipAddress) == 7):
-                                displayBinary(ipAddress)
+                        if (iter3 != 0 and (n == " " or n == ".")):
+                            print ("testing 2")
+                            # joing the numbers between the spaces into one
+                            octet = "".join(str(x) for x in tempList)
+                            print ("testing 3")
+                            octet = int(octet)
+                            print ("testing 4")
+                            print (octet)
+                            # if (octet > 0 or octet < 255):
+                            if (betweenPar(octet)):
+                                print ("testing 5")
+                                ipAddress.append(octet)
+                                if (len(ipAddress) < 7):  # number plus dot = 7 values
+                                    tempList = []  # clear the list
+                                    ipAddress.append(".")
+                                elif (len(ipAddress) == 7):
+                                    displayBinary(ipAddress)
+                                    break
+                                    #something else here to finish
+                            else:
+                                print ("Please follow guidelines when entering the IP address!")
                                 break
-                        print ("Please follow guidelines when entering the IP address!")
-                        break
+
+                        else:
+                            print ("Please follow guidelines when entering the IP address!")
+                            break
                 # print ("Convert another IP address? ")
                 # if (again1 == "yes"):
                 #     again3 = checkUserInput(3)
