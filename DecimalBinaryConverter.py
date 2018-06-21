@@ -51,7 +51,8 @@ def checkUserInput(data):
             try:
                 finalData = int(input("\nEnter Decimal Value: "))  # get user input
                 # call function to check if between parameters
-                iter2 = betweenPar(finalData)
+                if (betweenPar(finalData)):
+                    iter2 = False
             except:
                 print ("Please enter a number!")
     # Convert IP option
@@ -82,8 +83,8 @@ def checkUserInput(data):
                         # if (isinstance(n, int)):  ### may delete
                         #     print ("testing")
                         tempList.append(str(n))
-                        iter3 += 1 # might delete
-                        print (iter3)
+                        iter3 += 1 # testing purposes
+                        print ("Iteration # ", iter3)
                             # elif (iter3 != 0 and (n == " " or n == ".")):
                             # print ("testing 2")
                             # octet = ''.join(tempList) # joing the numbers between the spaces into one
@@ -99,27 +100,30 @@ def checkUserInput(data):
                             # stop if number is not between parameters
                     except:
                         if (iter3 != 0 and (n == " " or n == ".")):
+                            iter3 += 1 # testing purposes
+                            print ("Iteration # ", iter3)
                             oct += 1
-                            print ("# end of octet ", oct)
-                            # joing the numbers between the spaces into one
+                            # joining the array into a string / convert to str
                             octet = "".join(str(x) for x in tempList)
-                            print ("# joined successfully")
+                            print ("# array joined successfully into string")
+                            # convert to int
                             octet = int(octet)
                             print ("The octet is: ", octet)
                             if (betweenPar(octet)):
-                                print ("testing 5")
+                                print ("Pass: between 0 - 255")
                                 ipAddress.append(octet)
-                                print ("length ", len(ipAddress))
+                                print ("First octet appended to ipAddress, length ", len(ipAddress))
                                 if (len(ipAddress) <= 7):  # number plus dot = 7 values
-                                    print ("test 6")
+                                    print ("Pass, ipAddress <= 7")
                                     tempList = []  # clear the list
                                     ipAddress.append(".")
-                                    print ("len now is ", len(ipAddress))
-                                elif (len(ipAddress) >= 7):
+                                    print ("Cleared list, appended dot (.). Length now is ", len(ipAddress))
+                                elif (len(ipAddress) > 7):
                                     print("Error 1, should not be in here. write some code here")  ###### delete after
 
                             else:
                                 print ("Please follow guidelines when entering the IP address!")
+                                print ("Should prompt user to continue. Avoid entering loop...'Separate each octet by space...")
                                 break
 
                         else:
@@ -172,6 +176,7 @@ if __name__ == "__main__":
             if (choice == 1):
                 while (loop1):
                     value = checkUserInput(choice)
+                    print ("Pass first stage")
                     convert(value)  # Call on convert() function
 
                     print ("Convert another value? (enter yes/no) ", end='')
