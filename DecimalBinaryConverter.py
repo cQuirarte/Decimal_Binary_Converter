@@ -71,37 +71,45 @@ def checkUserInput(data):
                     # one for int the other for comma or space
                     # try:    ######## not done! finish
                         # val3 = int(n)
-                    n = int(n)
-                    if (isinstance(n, int)):
-                        print ("testing")
-                        tempList.append(int(n))
-                        iter3 += 1 # might delete
-                        print (iter3)
-                    elif (iter3 != 0 and (n == " " or n == ".")):
-                        print ("testing 2")
-                        octet = ''.join(tempList) # joing the numbers between the spaces into one
+                    try:
+                        n = int(n)  # Convert string element into an int
+                        if (isinstance(n, int)):
+                            print ("testing")
+                            tempList.append(int(n))
+                            iter3 += 1 # might delete
+                            print (iter3)
+                            # elif (iter3 != 0 and (n == " " or n == ".")):
+                            # print ("testing 2")
+                            # octet = ''.join(tempList) # joing the numbers between the spaces into one
+                            # # if (octet > 0 or octet < 255):
+                            # if (betweenPar(octet)):
+                            #     ipAddress.append(octet)
+                            #     if (len(ipAddress) < 7):    # number plus dot = 7 values
+                            #         tempList = []   # clear the list
+                            #         ipAddress.append(".")
+                            #     elif (len(ipAddress) == 7):
+                            #         displayBinary(ipAddress)
+                            #         break
+                            # stop if number is not between parameters
+                    except:
+                        print("testing 2")
+                        octet = ''.join(tempList)  # joing the numbers between the spaces into one
                         # if (octet > 0 or octet < 255):
                         if (betweenPar(octet)):
                             ipAddress.append(octet)
-                            if (len(ipAddress) < 7):    # number plus dot = 7 values
-                                tempList = []   # clear the list
+                            if (len(ipAddress) < 7):  # number plus dot = 7 values
+                                tempList = []  # clear the list
                                 ipAddress.append(".")
                             elif (len(ipAddress) == 7):
                                 displayBinary(ipAddress)
                                 break
-                        # stop if number is not between parameters
-                        else:
-                            print ("")
-                    else:
                         print ("Please follow guidelines when entering the IP address!")
                         break
-                print ("Convert another IP address? ")
-                again3 = checkUserInput(3)
-                # again1 = input("Convert another value? (enter yes/no) ")    #checkuserinput #might delete
-                if (again1 == "yes"):
-                    continue  # just skip. keep loop1 True for reiteration
-                elif (again1 == "no"):
-                    again2 = False
+                # print ("Convert another IP address? ")
+                # if (again1 == "yes"):
+                #     again3 = checkUserInput(3)
+                # elif (again1 == "no"):
+                #     again2 = False
         except:
             print("Please enter a valid IP address!")
 
@@ -123,6 +131,8 @@ def checkUserInput(data):
 if __name__ == "__main__":
     print ("Decimal to Binary Converter")
     iter = True     # iterator for main menu option
+    loop1 = True
+    loop2 = True
 
     while (iter):
         #   main menu
@@ -134,8 +144,6 @@ if __name__ == "__main__":
         try:
             choice = int(input("\nYour choice: "))
             if (choice == 1):
-                loop1 = True    # iterator
-                # Ask user to run the function again
                 while (loop1):
                     value = checkUserInput(choice)
                     convert(value)  # Call on convert() function
@@ -150,7 +158,14 @@ if __name__ == "__main__":
                         loop1 = False
                         # print("Program ended")
             elif (choice == 2):
-                checkUserInput(2)
+                while (loop2):
+                    checkUserInput(2)
+                    print("Convert another IP address? ")
+                    again2 = checkUserInput(3)
+                    if (again2 == "yes"):
+                        continue    # just skip. keep loop2 True for reiteration
+                    elif (again2 == "no"):
+                        loop2 = False
             elif (choice == 0):
                 iter = False    # end loop
                 runProg = False # end program
