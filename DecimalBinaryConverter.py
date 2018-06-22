@@ -45,7 +45,6 @@ def checkUserInput(data):
     finalData = ""
     iter2 = True    # iterator
     again3 = "" # iterator
-
     if (data == 1):
         while (iter2):
             try:
@@ -70,14 +69,11 @@ def checkUserInput(data):
             while (again2):
                 print ("\nSeparate each octet by space or period")
                 value2 = input("\nIP address: ") # get user input
-                print ("\n", value2)
+                print (value2)
 
-                # here
-
+                # The for loop is not feasible. Stops short beucase it reaches last value of the string
+                # and doesn't give the code below to run through and reach:
                 for n in value2:
-                    # one for int the other for comma or space
-                    # try:    ######## not done! finish
-                        # val3 = int(n)
                     try:
                         n = int(n)  # Convert string element into an int
                         # if (isinstance(n, int)):  ### may delete
@@ -85,21 +81,7 @@ def checkUserInput(data):
                         tempList.append(str(n))
                         iter3 += 1 # testing purposes
                         print ("Iteration # ", iter3)
-                            # elif (iter3 != 0 and (n == " " or n == ".")):
-                            # print ("testing 2")
-                            # octet = ''.join(tempList) # joing the numbers between the spaces into one
-                            # # if (octet > 0 or octet < 255):
-                            # if (betweenPar(octet)):
-                            #     ipAddress.append(octet)
-                            #     if (len(ipAddress) < 7):    # number plus dot = 7 values
-                            #         tempList = []   # clear the list
-                            #         ipAddress.append(".")
-                            #     elif (len(ipAddress) == 7):
-                            #         displayBinary(ipAddress)
-                            #         break
-                            # stop if number is not between parameters
-                            #
-                            print ("in try")
+                        print ("in try")    ### it stops here because for statement reaches 7
                     except:
                         if (iter3 != 0 and (n == " " or n == ".")):
                             iter3 += 1 # testing purposes
@@ -127,18 +109,18 @@ def checkUserInput(data):
                                 print ("Please follow guidelines when entering the IP address!")
                                 print ("Should prompt user to continue. Avoid entering loop...'Separate each octet by space...")
                                 break
-
                         else:
                             print ("Please follow guidelines when entering the IP address!")
                             break
                     # write some code here, maybe just 'continue' or delete line after you know that "break"
                     # allows for the interpreter to flow through here.
                     print ("Check 2")    ###### delete after taken care of
-                if (len(ipAddress == 6)):
-                    ipAddress.append(octet)
-                    print ("in here now")
-                    convert(ipAddress)
 
+                ### This code belongs within the for loop to complete the IP address
+                if (len(ipAddress == 7)):
+                    ipAddress.append(octet)
+                    print ("Iteration # ", iter3, "Final stage")
+                    convert(ipAddress)
                 # print ("Convert another IP address? ")
                 # if (again1 == "yes"):
                 #     again3 = checkUserInput(3)
@@ -146,7 +128,6 @@ def checkUserInput(data):
                 #     again2 = False
         except:
             print("Please enter a valid IP address!")
-
     # Check that the user response is either 'yes' or 'no'
     elif (data == 3):
         while (iter2):
@@ -169,6 +150,7 @@ if __name__ == "__main__":
     loop2 = True
 
     while (iter):
+        loop2 = True
         #   main menu
         print("\nSelect an option")
         print("1: Convert a single value to binary")
@@ -208,7 +190,6 @@ if __name__ == "__main__":
                 print ("Please enter a valid choice")
         except:
             print ("Please enter a number option!")
-
 
 print ("-- Program ended --")
 
