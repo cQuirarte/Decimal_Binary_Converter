@@ -98,6 +98,8 @@ def checkUserInput(data):
                             #         displayBinary(ipAddress)
                             #         break
                             # stop if number is not between parameters
+                            #
+                            print ("in try")
                     except:
                         if (iter3 != 0 and (n == " " or n == ".")):
                             iter3 += 1 # testing purposes
@@ -129,7 +131,9 @@ def checkUserInput(data):
                         else:
                             print ("Please follow guidelines when entering the IP address!")
                             break
-                    print ("Error 2, should not be in here. write some code here")    ###### delete after taken care of
+                    # write some code here, maybe just 'continue' or delete line after you know that "break"
+                    # allows for the interpreter to flow through here.
+                    print ("Check 2")    ###### delete after taken care of
                 if (len(ipAddress == 6)):
                     ipAddress.append(octet)
                     print ("in here now")
