@@ -2,6 +2,7 @@
 # This program will help a user convert decimal values to binary
 # The purpose of this program is to help network administrators
 
+import types
 
 def convert(value1):
     list1 = list()  # create an empty list
@@ -9,18 +10,33 @@ def convert(value1):
 
     val1 = value1 # copy value1 content to val1
 
-    # Algorithm to convert decimal to binary
-    while (val1 >= 1):
-        if (val1 % 2 == 0):
+    print ("in Convert function")
+    if (isinstance(val1, list)):
+        print ("a list")
+
+  ###### need to revise the below code to accomodate not only an int but also a list.
+
+    try:
+        # if val1 is a single int value
+        while (val1 >= 1):
+            if (val1 % 2 == 0):
+                list1.append(0)
+            else:
+                list1.append(1)
+            val1 = val1 / 2
+            val1 = int(val1)
+        # Ensures that there are 8 total bits
+        while (len(list1) < 8):
             list1.append(0)
-        else:
-            list1.append(1)
-        val1 = val1 / 2
-        val1 = int(val1)
-    # Ensures that there are 8 total bits
-    while (len(list1) < 8):
-        list1.append(0)
-    displayBinary(list1) # Call on function to display binary conversion
+        displayBinary(list1) # Call on function to display binary conversion
+    except:
+        ### finish writing code
+        # continue
+        for v in val1:
+            try:
+                continue
+            except:
+                continue
 
 
 # Prints the values in reversed order, as it should be
@@ -29,6 +45,7 @@ def displayBinary(fullList):
     for item in reversed(fullList):
         print(item, end='')
     print ("\n")
+
 
 # Function to check if between 0 to 255
 def betweenPar(usrNum):
@@ -69,6 +86,7 @@ def checkUserInput(data):
             while (again2):
                 print ("\nSeparate each octet by space or period")
                 value2 = input("\nIP address: ") # get user input
+                value2 += "."
                 print (value2)
 
                 # The for loop is not feasible. Stops short beucase it reaches last value of the string
@@ -97,13 +115,18 @@ def checkUserInput(data):
                                 print ("Pass: between 0 - 255")
                                 ipAddress.append(octet)
                                 print ("First octet appended to ipAddress, length ", len(ipAddress))
-                                if (len(ipAddress) <= 7):  # number plus dot = 7 values
+                                if (len(ipAddress) < 7):  # number plus dot = 7 values
                                     print ("Pass, ipAddress <= 7")
                                     tempList = []  # clear the list
                                     ipAddress.append(".")
                                     print ("Cleared list, appended dot (.). Length now is ", len(ipAddress))
                                 elif (len(ipAddress) > 7):
                                     print("Error 1, should not be in here. write some code here")  ###### delete after
+                                elif (len(ipAddress) == 7):
+                                        print("Iteration # ", iter3, "Final stage")
+                                        finalData = ipAddress
+                                        again2 = False
+
 
                             else:
                                 print ("Please follow guidelines when entering the IP address!")
@@ -117,10 +140,11 @@ def checkUserInput(data):
                     print ("Check 2")    ###### delete after taken care of
 
                 ### This code belongs within the for loop to complete the IP address
-                if (len(ipAddress == 7)):
-                    ipAddress.append(octet)
-                    print ("Iteration # ", iter3, "Final stage")
-                    convert(ipAddress)
+                # if (len(ipAddress == 6)):         !!!!
+                #     ipAddress.append(octet)
+                #     print ("Iteration # ", iter3, "Final stage")
+                #     convert(ipAddress)
+
                 # print ("Convert another IP address? ")
                 # if (again1 == "yes"):
                 #     again3 = checkUserInput(3)
@@ -176,7 +200,11 @@ if __name__ == "__main__":
                         # print("Program ended")
             elif (choice == 2):
                 while (loop2):
-                    checkUserInput(2)
+                    ### functin checkuserinput should return a value.
+                    ipAddy = checkUserInput(2)
+                    print ("Test 888")
+                    print (ipAddy)
+                    convert(ipAddy)
                     print("Convert another IP address? ")
                     again2 = checkUserInput(3)
                     if (again2 == "yes"):
