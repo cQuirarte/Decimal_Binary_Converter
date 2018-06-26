@@ -7,36 +7,81 @@ import types
 def convert(value1):
     list1 = list()  # create an empty list
     iter = True     # used for iteration
-
+    t = 0
     val1 = value1 # copy value1 content to val1
 
     print ("in Convert function")
-    if (isinstance(val1, list)):
-        print ("a list")
+    # if (isinstance(val1, list)):
+    #     for v in val1:
+    #         try:
+    #             while (v >= 1):
+    #                 if (v % 2 == 0):
+    #                     list1.append(0)
+    #                 else:
+    #                     list1.append(1)
+    #             v = v / 2
+    #         except:
+    #             if (v == "."):
+    #                 list.append(".")
 
-  ###### need to revise the below code to accomodate not only an int but also a list.
+    ###### need to revise the below code to accomodate not only an int but also a list.
+    #####   might have to work with 2 lists. Upon reaching ".", add that, and add (+) the 2 lists.
+    for v in range(0, len(val1)):
+        print ("test 2234")
+        print (len(val1))
+        try:
+            while (val1[v] >= 1):
+                print ("test 111")
+                if (val1[v] % 2 == 0):
+                    print ("insert 1/2")
+                    list1.insert(0, 0)
+                    print ("insert 1")
+                else:
+                    list1.insert(0, 1)
+                    print ("insert 2")
+                val1[v] = val1[v] / 2
+            # Ensures that there are 8 total bits
+            while (len(list1) < 8):
+                print ("test 777")
+                list1.insert(0, 0)
+            # displayBinary(list1) # Call on function to display binary conversion  # may delete
+        except:
+            if (val1[v] == "."):
+                print ("test 5533")
+                # list1.append(".")  may un-comment
+                print (list1)
+                list1.insert(0, val1[v])
+                print (list1)
+                print ("test 2999")
+        print ("test 998")
+        t += 1
+        print ("iteration ### ", t)
+    print ("test 9333")
 
-    try:
-        # if val1 is a single int value
-        while (val1 >= 1):
-            if (val1 % 2 == 0):
-                list1.append(0)
-            else:
-                list1.append(1)
-            val1 = val1 / 2
-            val1 = int(val1)
-        # Ensures that there are 8 total bits
-        while (len(list1) < 8):
-            list1.append(0)
-        displayBinary(list1) # Call on function to display binary conversion
-    except:
-        ### finish writing code
-        # continue
-        for v in val1:
-            try:
-                continue
-            except:
-                continue
+    displayBinary(list1)
+
+    #### keep, might need it
+    # try:
+    #     # if val1 is a single int value
+    #     while (val1 >= 1):
+    #         if (val1 % 2 == 0):
+    #             list1.append(0)
+    #         else:
+    #             list1.append(1)
+    #         val1 = val1 / 2
+    #         val1 = int(val1)
+    #     # Ensures that there are 8 total bits
+    #     while (len(list1) < 8):
+    #         list1.append(0)
+    #     displayBinary(list1) # Call on function to display binary conversion
+    # except:
+    #     ### finish writing code
+    #     # continue
+    #     for v in val1:
+    #         try:
+    #             continue
+    #         except:
+    #             continue
 
 
 # Prints the values in reversed order, as it should be
