@@ -6,6 +6,7 @@ import types
 
 def convert(value1):
     list1 = list()  # create an empty list
+    list2 = list()
     iter = True     # used for iteration
     t = 0
     val1 = value1 # copy value1 content to val1
@@ -48,17 +49,19 @@ def convert(value1):
         except:
             if (val1[v] == "."):
                 print ("test 5533")
-                # list1.append(".")  may un-comment
+                list1.append(".")
                 print (list1)
-                list1.insert(0, val1[v])
-                print (list1)
+                list2 += list1
+
+                print (list2)
                 print ("test 2999")
+                list1 = list()
         print ("test 998")
         t += 1
         print ("iteration ### ", t)
     print ("test 9333")
 
-    displayBinary(list1)
+    displayBinary(list2)
 
     #### keep, might need it
     # try:
