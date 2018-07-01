@@ -1,8 +1,8 @@
 # Carlos Quirarte
-# This program will help a user convert decimal values to binary
+# Created 2018
 # The purpose of this program is to help network administrators
+# convert single decimal values or an entire IP address into binary.
 
-import types
 
 def convert(value1):
     list1 = list()  # create an empty list
@@ -21,24 +21,10 @@ def convert(value1):
     except:
         pass
 
-
-    # if (isinstance(val1, list)):
-    #     for v in val1:
-    #         try:
-    #             while (v >= 1):
-    #                 if (v % 2 == 0):
-    #                     list1.append(0)
-    #                 else:
-    #                     list1.append(1)
-    #             v = v / 2
-    #         except:
-    #             if (v == "."):
-    #                 list.append(".")
-    ###### need to revise the below code to accomodate not only an int but also a list.
-    #####   might have to work with 2 lists. Upon reaching ".", add that, and add (+) the 2 lists.
-
     # Code to convert a decimal IP address to binary and store as list
     for v in range(0, len(val1)):
+
+        # block of code for my testing purposes
         print ("test 2234")
         print ("length: ", len(val1))
         print ("val ", type(val1[v]))
@@ -133,8 +119,10 @@ def displayBinary(fullList):
 # Function to check if between 0 to 255
 def betweenPar(usrNum):
     if (usrNum >= 0 and usrNum <= 255):
+        print ("test 56")
         return True
-    elif (usrNum < 0 and usrNum > 255):
+    elif (usrNum < 0 or usrNum > 255):
+        print ("test 57")
         return False
 
 
@@ -152,6 +140,8 @@ def checkUserInput(data):
                 # call function to check if between parameters
                 if (betweenPar(finalData)):
                     iter2 = False
+                else:
+                    print ("Please enter a value from 0 to 255")
             except:
                 print ("Please enter a number! 3")
     # Convert IP option
@@ -216,7 +206,7 @@ def checkUserInput(data):
                                 print ("Should prompt user to continue. Avoid entering loop...'Separate each octet by space...")
                                 break
                         else:
-                            print ("Please follow guidelines when entering the IP address!")
+                            print ("\nPlease follow guidelines when entering the IP address!")
                             break
                     # write some code here, maybe just 'continue' or delete line after you know that "break"
                     # allows for the interpreter to flow through here.
@@ -257,6 +247,7 @@ if __name__ == "__main__":
     loop2 = True
 
     while (iter):
+        loop1 = True
         loop2 = True
         #   main menu
         print("\nSelect an option")
@@ -288,7 +279,7 @@ if __name__ == "__main__":
                     print ("Test 888")
                     print (ipAddy)
                     convert(ipAddy)
-                    print("Convert another IP address? ")
+                    print("Convert another IP address? (enter yes/no) ", end='')
                     again2 = checkUserInput(3)
                     if (again2 == "yes"):
                         continue    # just skip. keep loop2 True for reiteration
