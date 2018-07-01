@@ -12,6 +12,16 @@ def convert(value1):
     val1 = value1 # copy value1 content to val1
 
     print ("in Convert function")
+
+    # Convert val1 to str if int so we can iterate over it
+    try:
+        if (type(val1) == int):
+            val1 = [val1]
+            print ("test 34")
+    except:
+        pass
+
+
     # if (isinstance(val1, list)):
     #     for v in val1:
     #         try:
@@ -24,15 +34,27 @@ def convert(value1):
     #         except:
     #             if (v == "."):
     #                 list.append(".")
-
     ###### need to revise the below code to accomodate not only an int but also a list.
     #####   might have to work with 2 lists. Upon reaching ".", add that, and add (+) the 2 lists.
+
+    # Code to convert a decimal IP address to binary and store as list
     for v in range(0, len(val1)):
         print ("test 2234")
-        print (len(val1))
+        print ("length: ", len(val1))
+        print ("val ", type(val1[v]))
+
+        # Ensure each element is an int
+        try:
+            # if (type(val1[v]) == str):
+            print (val1[v])
+            # val1[v] = int(val1[v])
+            print ("test 35")
+        except:
+            print ("fail 21")
+
         try:
             while (val1[v] >= 1):
-                print ("test 111")
+                print ("test 111,  value[v] = ", val1[v])
                 if (val1[v] % 2 == 0):
                     print ("insert 1/2")
                     list1.insert(0, 0)
@@ -44,8 +66,19 @@ def convert(value1):
             # Ensures that there are 8 total bits
             while (len(list1) < 8):
                 print ("test 777")
+                print ("val ", val1[v])
                 list1.insert(0, 0)
-            # displayBinary(list1) # Call on function to display binary conversion  # may delete
+                print (list1)
+                print (list2)
+            if (len(list1) == 8 and len(list2) == 27):
+                print ("in here now")
+                list2 += list1
+                print (list2)
+                break
+            elif (len(list1) == 8 and len(val1) == 1):
+                list2 += list1
+                # displayBinary(list1) # Call on function to display binary conversion  # may delete
+
         except:
             if (val1[v] == "."):
                 print ("test 5533")
@@ -55,10 +88,12 @@ def convert(value1):
 
                 print (list2)
                 print ("test 2999")
-                list1 = list()
+                list1 = list()  # clear the list
         print ("test 998")
         t += 1
         print ("iteration ### ", t)
+        if (t == 7):
+            break
     print ("test 9333")
 
     displayBinary(list2)
@@ -90,7 +125,7 @@ def convert(value1):
 # Prints the values in reversed order, as it should be
 def displayBinary(fullList):
     print ("Binary Value: " , end='')
-    for item in reversed(fullList):
+    for item in (fullList):
         print(item, end='')
     print ("\n")
 
@@ -118,7 +153,7 @@ def checkUserInput(data):
                 if (betweenPar(finalData)):
                     iter2 = False
             except:
-                print ("Please enter a number!")
+                print ("Please enter a number! 3")
     # Convert IP option
     elif (data == 2):
         ipAddress = list()
@@ -265,11 +300,6 @@ if __name__ == "__main__":
             else:
                 print ("Please enter a valid choice")
         except:
-            print ("Please enter a number option!")
+            print ("Please enter a number option! 2")
 
 print ("-- Program ended --")
-
-
-
-
-
