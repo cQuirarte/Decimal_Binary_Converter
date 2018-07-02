@@ -108,6 +108,10 @@ def betweenPar(usrNum):
         return False
 
 
+def boldIP():
+    return (style.BOLD + "255.255.255.255" + style.END)
+
+
 # Function to ensure user enters the appropriate responses i.e. "Please enter numbers not letters!"
 def checkUserInput(data):
     # Convert single value option
@@ -133,61 +137,74 @@ def checkUserInput(data):
         iter3 = 0
         again2 = True
         oct = 0
+        k = 0
 
         print ("size of ipAddress " , len(ipAddress))
 
         try:
             while (again2):
+                print ("k = ", k)
                 print ("\nSeparate each octet by space or period")
                 value2 = input("\nIP address: ") # get user input
-                value2 += "."
-                print (value2)
+                value2 += "."   ### used for the 'for loop' to add extra iteration
+                print (value2, "length is ", len(value2))
+                ipAddress = []  # Clear the list
 
                 # The for loop is not feasible. Stops short beucase it reaches last value of the string
                 # and doesn't give the code below to run through and reach:
-                for n in value2:
-                    try:
-                        n = int(n)  # Convert string element into an int
-                        # if (isinstance(n, int)):  ### may delete
-                        #     print ("testing")
-                        tempList.append(str(n))
-                        iter3 += 1 # testing purposes
-                        print ("Iteration # ", iter3)
-                        print ("test 955")    ### it stops here because for statement reaches 7
-                    except:
-                        if (iter3 != 0 and (n == " " or n == ".")):
+                #### might need to include a 'try except' here
+                try:
+                    for n in value2:
+                        k += 1
+                        print ("kk = ", k, " n=", n)
+                        try:
+                            n = int(n)  # Convert string element into an int
+                            # if (isinstance(n, int)):  ### may delete
+                            #     print ("testing")
+                            tempList.append(str(n))
                             iter3 += 1 # testing purposes
                             print ("Iteration # ", iter3)
-                            oct += 1
-                            # joining the array into a string / convert to str
-                            octet = "".join(str(x) for x in tempList)
-                            print ("# array joined successfully into string")
-                            # convert to int
-                            octet = int(octet)
-                            print ("The octet is: ", octet)
-                            if (betweenPar(octet)):
-                                print ("Pass: between 0 - 255")
-                                ipAddress.append(octet)
-                                print ("First octet appended to ipAddress, length ", len(ipAddress))
-                                if (len(ipAddress) < 7):  # number plus dot = 7 values
-                                    print ("Pass, ipAddress <= 7")
-                                    tempList = []  # clear the list
-                                    ipAddress.append(".")
-                                    print ("Cleared list, appended dot (.). Length now is ", len(ipAddress))
-                                elif (len(ipAddress) > 7):
-                                    print("Error 1, should not be in here. write some code here")  ###### delete after
-                                elif (len(ipAddress) == 7):
-                                        print("Iteration # ", iter3, "Final stage")
-                                        finalData = ipAddress
-                                        again2 = False
+                            print ("test 955")    ### it stops here because 'for statement' reaches 7
+                        except:
+                            if (iter3 != 0 and (n == " " or n == ".")):
+                                iter3 += 1 # testing purposes
+                                print ("Iteration # ", iter3)
+                                oct += 1        ### mainly useless might delete
+                                # joining the array into a string / convert to str
+                                octet = "".join(str(x) for x in tempList)
+                                print ("# array joined successfully into string")
+                                # convert to int
+                                octet = int(octet)
+                                print ("The octet is: ", octet)
+                                if (betweenPar(octet)):
+                                    print ("Pass: between 0 - 255")
+                                    ipAddress.append(octet)
+                                    print ("First octet appended to ipAddress, length ", len(ipAddress))
+                                    if (len(ipAddress) < 7):  # number plus dot = 7 values
+                                        print ("Pass, ipAddress <= 7")
+                                        tempList = []  # clear the list
+                                        ipAddress.append(".")
+                                        print ("Cleared list, appended dot (.). Length now is ", len(ipAddress))
+                                    elif (len(ipAddress) > 7):
+                                        print("Error 1, should not be in here. write some code here")  ###### delete after
+                                    elif (len(ipAddress) == 7):
+                                            print("Iteration # ", iter3, "Final stage")
+                                            finalData = ipAddress
+                                            again2 = False
+                                else:
+                                    print ("\n! Please follow guidelines when entering the IP address")
+                                    print ("! Enter IP address in the format example", style.BOLD + "255.255.255.255" + style.END)
+                                    break
                             else:
                                 print ("\n! Please follow guidelines when entering the IP address")
-                                print ("! Enter IP address in the format example", style.BOLD + "255.255.255.255" + style.END)
                                 break
-                        else:
-                            print ("\n! Please follow guidelines when entering the IP address")
-                            break
-                    print ("Check 2")    ###### testing purposes
+                        print ("Check 2")    ###### testing purposes
+                    print ("length ", len(ipAddress))   ##### testing
+                    if (len(ipAddress) < 7):
+                        print ("\n! Enter 4 values representing the format for IP addressing", boldIP())
+                    print ("test 9")
+                except:
+                    print ("fail 62")
         except:
             print("! fail 511")
     # Check that the user response is either 'yes' or 'no'
