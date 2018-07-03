@@ -144,7 +144,7 @@ def checkUserInput(data):
         try:
             while (again2):
                 print ("k = ", k)
-                print ("\nSeparate each octet by space or period")
+                print ("\nSeparate each octet by period or space")
                 value2 = input("\nIP address: ") # get user input
                 value2 += "."   ### used for the 'for loop' to add extra iteration
                 print (value2, "length is ", len(value2))
@@ -175,8 +175,9 @@ def checkUserInput(data):
                                 # joining the array into a string / convert to str
                                 octet = "".join(str(x) for x in tempList)
                                 print ("# array joined successfully into string")
+                                print ("Octed before conversion to int from str", octet)
                                 # convert to int
-                                octet = int(octet)
+                                octet = int(octet)      # Convert from str to int. Also drops extra 0s '0000'-> 0
                                 print ("The octet is: ", octet)
                                 if (betweenPar(octet)):
                                     print ("Pass: between 0 - 255")
@@ -195,7 +196,7 @@ def checkUserInput(data):
                                             again2 = False
                                 else:
                                     print ("\n! Please follow guidelines when entering the IP address")
-                                    print ("! Enter IP address in the format example", style.BOLD + "255.255.255.255" + style.END)
+                                    print ("\n! Enter IP address in the format example", style.BOLD + "255.255.255.255" + style.END)
                                     break
                             else:
                                 print ("\n! Please follow guidelines when entering the IP address")
