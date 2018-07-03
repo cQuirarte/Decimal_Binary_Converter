@@ -224,7 +224,6 @@ def checkUserInput(data):
     return finalData
 
 
-
 if __name__ == "__main__":
     print ("Decimal to Binary Converter")
     iter = True     # iterator for main menu option
