@@ -9,6 +9,7 @@ class style:
    END = '\033[0m'
 
 
+
 def convert(value1):
     list1 = list()  # create an empty list
     list2 = list()
@@ -51,12 +52,14 @@ def convert(value1):
     displayBinary(list2)
 
 
+
 # Prints the values of the array without space
 def displayBinary(fullList):
     print ("\nBinary Value: " , end='')
     for item in (fullList):
         print(item, end='')
     print ("\n")
+
 
 
 # Function to check if user's value is between 0 to 255
@@ -67,8 +70,10 @@ def betweenPar(usrNum):
         return False
 
 
+
 def boldIP():
     return (style.BOLD + "255.255.255.255" + style.END)
+
 
 
 # Function to ensure user enters the appropriate responses i.e. "Please enter numbers not letters!"
@@ -149,6 +154,7 @@ def checkUserInput(data):
             else:
                 print ("\n! Please respond either 'yes' or 'no'\n")
     return finalData
+
 
 
 if __name__ == "__main__":
