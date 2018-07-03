@@ -1,6 +1,6 @@
 # Carlos Quirarte
 # Created 2018
-# The purpose of this program is to help network administrators
+# The purpose of this program is to help anybody
 # convert single decimal values or an entire IP address into binary.
 
 
