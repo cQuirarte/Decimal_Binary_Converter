@@ -4,9 +4,15 @@
 # convert single decimal values or an entire IP address into binary.
 
 
+
 class style:
    BOLD = '\033[1m'
    END = '\033[0m'
+
+
+
+def boldIP():
+    return (style.BOLD + "255.255.255.255" + style.END)
 
 
 
@@ -68,11 +74,6 @@ def betweenPar(usrNum):
         return True
     elif (usrNum < 0 or usrNum > 255):  # testing purposes
         return False
-
-
-
-def boldIP():
-    return (style.BOLD + "255.255.255.255" + style.END)
 
 
 
