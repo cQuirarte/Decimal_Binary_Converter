@@ -15,84 +15,45 @@ def convert(value1):
     iter = True     # used for iteration
     t = 0
     val1 = value1 # copy value1 content to val1
-
-    print ("in Convert function")   ### testing purposes
-
     # Convert val1 to str if int so we can iterate over it
     try:
         if (type(val1) == int):
             val1 = [val1]
-            print ("test 34")
     except:
         pass
 
     # Algorithm to convert a decimal IP address to binary and store as list
     for v in range(0, len(val1)):
-
-        # block of code for my testing purposes
-        print ("test 2234")
-        print ("length: ", len(val1))
-        print ("val ", type(val1[v]))
-
-        # Ensure each element is an int
-        try:
-            # if (type(val1[v]) == str):
-            print (val1[v])
-            # val1[v] = int(val1[v])
-            print ("test 35")
-        except:
-            print ("fail 21")
-
         try:
             while (val1[v] >= 1):
-                print ("test 111,  value[v] = ", val1[v])
                 if (val1[v] % 2 == 0):
-                    print ("insert 1/2")
                     list1.insert(0, 0)
-                    print ("insert 1")
                 else:
                     list1.insert(0, 1)
-                    print ("insert 2")
                 val1[v] = int(val1[v] / 2)      # Convert to int, dropping decimal point
             # Ensures that there are 8 total bits
             while (len(list1) < 8):
-                print ("test 777")
-                print ("val ", val1[v])
                 list1.insert(0, 0)
-                print (list1)
-                print (list2)
             if (len(list1) == 8 and len(list2) == 27):
-                print ("in here now")
                 list2 += list1
-                print (list2)
                 break
             elif (len(list1) == 8 and len(val1) == 1):
                 list2 += list1
         except:
             if (val1[v] == "."):
-                print ("test 5533")
                 list1.append(".")
-                print (list1)
                 list2 += list1
-
-                print (list2)
-                print ("test 2999")
                 list1 = list()  # clear the list
-
-        print ("test 998")
         t += 1
-        print ("iteration ### ", t)
         if (t == 7):
             break
-    print ("test 9333")
-
     # Display in binary after the converted
     displayBinary(list2)
 
 
 # Prints the values of the array without space
 def displayBinary(fullList):
-    print ("Binary Value: " , end='')
+    print ("\nBinary Value: " , end='')
     for item in (fullList):
         print(item, end='')
     print ("\n")
@@ -101,10 +62,8 @@ def displayBinary(fullList):
 # Function to check if user's value is between 0 to 255
 def betweenPar(usrNum):
     if (usrNum >= 0 and usrNum <= 255):
-        print ("test 56")   # testing purposes
         return True
     elif (usrNum < 0 or usrNum > 255):  # testing purposes
-        print ("test 57")
         return False
 
 
@@ -131,67 +90,38 @@ def checkUserInput(data):
                 print ("\n! Please enter a value from 0 to 255")
     # Convert IP option
     elif (data == 2):
-        ipAddress = list()
-        tempList = list()
-        octet = 0
         iter3 = 0
         again2 = True
-        oct = 0
-        k = 0
-
-        print ("size of ipAddress " , len(ipAddress))
-
         try:
             while (again2):
-                print ("k = ", k)
                 print ("\nSeparate each octet by period or space")
                 value2 = input("\nIP address: ") # get user input
                 value2 += "."   ### used for the 'for loop' to add extra iteration
-                print (value2, "length is ", len(value2))
-
-                ipAddress = []  # Clear the list
+                # Initialize and clear the lists
+                ipAddress = []
                 tempList = []
 
-                # The for loop is not feasible. Stops short beucase it reaches last value of the string
-                # and doesn't give the code below to run through and reach:
-                #### might need to include a 'try except' here
                 try:
                     for n in value2:
-                        k += 1
-                        print ("kk = ", k, " n=", n)
                         try:
                             n = int(n)  # Convert string element into an int
-                            # if (isinstance(n, int)):  ### may delete
-                            #     print ("testing")
                             tempList.append(str(n))
-                            iter3 += 1 # testing purposes
-                            print ("Iteration # ", iter3)
-                            print ("test 955")    ### it stops here because 'for statement' reaches 7
+                            iter3 += 1 # iteration purposes
                         except:
                             if (iter3 != 0 and (n == " " or n == ".")):
-                                iter3 += 1 # testing purposes
-                                print ("Iteration # ", iter3)
-                                oct += 1        ### mainly useless might delete
+                                iter3 += 1 # iteration purposes
                                 # joining the array into a string / convert to str
                                 octet = "".join(str(x) for x in tempList)
-                                print ("# array joined successfully into string")
-                                print ("Octed before conversion to int from str", octet)
-                                # convert to int
-                                octet = int(octet)      # Convert from str to int. Also drops extra 0s '0000'-> 0
-                                print ("The octet is: ", octet)
+                                # Convert from str to int. Also drops extra 0s '0000'-> 0
+                                octet = int(octet)
                                 if (betweenPar(octet)):
-                                    print ("Pass: between 0 - 255")
                                     ipAddress.append(octet)
-                                    print ("First octet appended to ipAddress, length ", len(ipAddress))
                                     if (len(ipAddress) < 7):  # number plus dot = 7 values
-                                        print ("Pass, ipAddress <= 7")
                                         tempList = []  # clear the list
                                         ipAddress.append(".")
-                                        print ("Cleared list, appended dot (.). Length now is ", len(ipAddress))
                                     elif (len(ipAddress) > 7):
-                                        print("Error 1, should not be in here. write some code here")  ###### delete after
+                                        print("Error 261")  ###### delete after
                                     elif (len(ipAddress) == 7):
-                                            print("Iteration # ", iter3, "Final stage")
                                             finalData = ipAddress
                                             again2 = False
                                 else:
@@ -201,15 +131,12 @@ def checkUserInput(data):
                             else:
                                 print ("\n! Please follow guidelines when entering the IP address")
                                 break
-                        print ("Check 2")    ###### testing purposes
-                    print ("length ", len(ipAddress))   ##### testing
                     if (len(ipAddress) < 7):
                         print ("\n! Enter 4 values representing the format for IP addressing", boldIP())
-                    print ("test 9")
                 except:
-                    print ("fail 62")
+                    print ("Error 626")
         except:
-            print("! fail 511")
+            print("Error 677")
     # Check that the user response is either 'yes' or 'no'
     elif (data == 3):
         while (iter2):
@@ -244,24 +171,17 @@ if __name__ == "__main__":
             if (choice == 1):
                 while (loop1):
                     value = checkUserInput(choice)
-                    print ("Pass first stage")
                     convert(value)  # Call on convert() function
-
                     print ("Convert another value? (enter yes/no) ", end='')
                     again1 = checkUserInput(3)
-                    # again1 = input("Convert another value? (enter yes/no) ")    #checkuserinput #might delete
                     if (again1 == "yes"):
                         continue    # just skip. keep loop1 True for reiteration
-                        # convert()  # Call on the function again to convert another value #might delete line
                     elif (again1 == "no"):
                         loop1 = False
-                        # print("Program ended")
             elif (choice == 2):
                 while (loop2):
                     ### functin checkuserinput should return a value.
                     ipAddy = checkUserInput(2)
-                    print ("Test 888")
-                    print (ipAddy)
                     convert(ipAddy)
                     print("Convert another IP address? (enter yes/no) ", end='')
                     again2 = checkUserInput(3)
@@ -275,6 +195,6 @@ if __name__ == "__main__":
             else:
                 print ("\n! Please enter a valid choice")
         except:
-            print ("\n! Please enter a number option 2")
+            print ("\n! Please enter a number option")
 
-print ("-- Program ended --")
+print ("\n-- Program ended --")
