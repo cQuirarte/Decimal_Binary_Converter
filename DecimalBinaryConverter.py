@@ -53,7 +53,7 @@ def convert(value1):
                 else:
                     list1.insert(0, 1)
                     print ("insert 2")
-                val1[v] = val1[v] / 2
+                val1[v] = int(val1[v] / 2)      # Convert to int, dropping decimal point
             # Ensures that there are 8 total bits
             while (len(list1) < 8):
                 print ("test 777")
@@ -148,7 +148,9 @@ def checkUserInput(data):
                 value2 = input("\nIP address: ") # get user input
                 value2 += "."   ### used for the 'for loop' to add extra iteration
                 print (value2, "length is ", len(value2))
+
                 ipAddress = []  # Clear the list
+                tempList = []
 
                 # The for loop is not feasible. Stops short beucase it reaches last value of the string
                 # and doesn't give the code below to run through and reach:
