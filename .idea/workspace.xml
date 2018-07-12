@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1984ad0a-3a7e-4970-a02f-2572e0548865" name="Default" comment="testing Git on Windows" />
+    <list default="true" id="1984ad0a-3a7e-4970-a02f-2572e0548865" name="Default" comment="testing Git on Windows">
+      <change beforePath="$PROJECT_DIR$/DecimalBinaryConverter.py" beforeDir="false" afterPath="$PROJECT_DIR$/DecimalBinaryConverter.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +16,14 @@
       <file leaf-file-name="DecimalBinaryConverter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DecimalBinaryConverter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+            <state relative-caret-position="185">
+              <caret line="177" column="43" lean-forward="true" selection-start-line="177" selection-start-column="43" selection-end-line="177" selection-end-column="43" />
+              <folding>
+                <element signature="e#247#1541#0" />
+                <element signature="e#1624#1732#0" />
+                <element signature="e#1819#1954#0" />
+                <element signature="e#1975#2026#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -34,8 +42,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="645" />
-    <option name="width" value="2058" />
-    <option name="height" value="1535" />
+    <option name="width" value="2213" />
+    <option name="height" value="1962" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -110,17 +118,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="430" y="0" width="1372" height="1023" extended-state="0" />
+    <frame x="430" y="0" width="1475" height="1308" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2494382" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23157163" />
       <window_info anchor="bottom" id="TODO" order="8" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.49962547" visible="true" weight="0.32919955" />
+      <window_info anchor="bottom" id="Version Control" order="1" sideWeight="0.4993046" visible="true" weight="0.22098976" />
       <window_info anchor="bottom" id="Python Console" order="2" />
       <window_info anchor="bottom" id="Run" order="9" sideWeight="0.49962547" weight="0.32919955" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.50037456" side_tool="true" visible="true" weight="0.32919955" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.5006954" side_tool="true" visible="true" weight="0.22098976" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="4" />
@@ -168,8 +176,14 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/DecimalBinaryConverter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+        <state relative-caret-position="185">
+          <caret line="177" column="43" lean-forward="true" selection-start-line="177" selection-start-column="43" selection-end-line="177" selection-end-column="43" />
+          <folding>
+            <element signature="e#247#1541#0" />
+            <element signature="e#1624#1732#0" />
+            <element signature="e#1819#1954#0" />
+            <element signature="e#1975#2026#0" />
+          </folding>
         </state>
       </provider>
     </entry>

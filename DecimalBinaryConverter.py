@@ -77,6 +77,7 @@ def checkUserInput(data):
     finalData = ""
     iter2 = True    # iterator
     again3 = "" # iterator
+    # Data == 1: ask user to enter decimal value
     if (data == 1):
         while (iter2):
             try:
@@ -88,7 +89,7 @@ def checkUserInput(data):
                     print ("\n! Please enter a value from 0 to 255")
             except:
                 print ("\n! Please enter a value from 0 to 255")
-    # Convert IP option
+    # Data == 2: ask user to enter IP address
     elif (data == 2):
         iter3 = 0
         again2 = True
@@ -158,12 +159,14 @@ if __name__ == "__main__":
     loop2 = True
 
     while (iter):
-        loop1 = True
-        loop2 = True
+        loop1 = True    # for option 1
+        loop2 = True    # for option 2
+        loop3 = True    # for option 3
         #   main menu
         print("\nSelect an option")
         print("1: Convert a single value to binary")
         print("2: Convert an entire IP address based off IPv4")
+        print("3: Convert binary values to decimal")
         print("0: Exit program")
 
         try:
@@ -189,6 +192,15 @@ if __name__ == "__main__":
                         continue    # just skip. keep loop2 True for reiteration
                     elif (again2 == "no"):
                         loop2 = False
+            elif (choice == 3):         ##### complete section
+                while (loop3):
+
+                    print("Convert another value? (enter yes/no) ", end='')
+                    again3 = checkUserInput(3)
+                    if (again3 == "yes"):
+                        continue  # just skip. keep loop1 True for reiteration
+                    elif (again3 == "no"):
+                        loop1 = False
             elif (choice == 0):
                 iter = False    # end loop
                 runProg = False # end program
