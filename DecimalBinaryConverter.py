@@ -8,7 +8,7 @@ class style:
    BOLD = '\033[1m'
    END = '\033[0m'
 
-
+# Converts decimal values into binary
 def convert(value1):
     list1 = list()  # create an empty list
     list2 = list()
@@ -50,6 +50,9 @@ def convert(value1):
     # Display in binary after the converted
     displayBinary(list2)
 
+def convertToDecimal(bValue):
+    # you would have made sure that the value being passed is in binary, no need to test here.
+    print ("testing")
 
 # Prints the values of the array without space
 def displayBinary(fullList):
@@ -75,7 +78,13 @@ def boldIP():
 def checkUserInput(data):
     # Convert single value option
     finalData = ""
+    iter1 = True
     iter2 = True    # iterator
+
+    # option 3 variables
+    flag1 = True
+    myList = []
+
     again3 = "" # iterator
     # Data == 1: ask user to enter decimal value
     if (data == 1):
@@ -149,6 +158,35 @@ def checkUserInput(data):
                 iter2 = False
             else:
                 print ("\n! Please respond either 'yes' or 'no'\n")
+
+    # Check that the data entered by user is in binary i.e. 01101001
+    elif (data == 4):
+        try:
+            while (iter1):
+                flag1 = True
+                userBinary = input("Enter the binary value: ")
+
+                for i in userBinary:
+                    if (i == "1" or i == "0"):
+                        continue
+                    else:
+                        print ("Please enter 1s and 0s only")
+                        flag1 = False
+                        break
+
+                if (flag1 == True):
+                    for i in userBinary:
+                        myList.append(int(i))
+                    print (myList)
+                    # Convert binary to decimal
+                    # userBinary should already be a list of integers by this point
+                    # convert(userBinary)
+
+                    # End loop by this point
+                    iter1 = False
+        except:
+            print ("Please enter integer values of 1s and 0s only!")
+
     return finalData
 
 
@@ -166,7 +204,7 @@ if __name__ == "__main__":
         print("\nSelect an option")
         print("1: Convert a single value to binary")
         print("2: Convert an entire IP address based off IPv4")
-        print("3: Convert binary values to decimal")
+        print("3: Convert a single binary value to decimal")
         print("0: Exit program")
 
         try:
@@ -194,13 +232,15 @@ if __name__ == "__main__":
                         loop2 = False
             elif (choice == 3):         ##### complete section
                 while (loop3):
+                    ### write code here
+                    checkUserInput(4)
 
                     print("Convert another value? (enter yes/no) ", end='')
                     again3 = checkUserInput(3)
                     if (again3 == "yes"):
                         continue  # just skip. keep loop1 True for reiteration
                     elif (again3 == "no"):
-                        loop1 = False
+                        loop3 = False
             elif (choice == 0):
                 iter = False    # end loop
                 runProg = False # end program
