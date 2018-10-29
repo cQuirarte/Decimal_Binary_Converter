@@ -51,10 +51,21 @@ def convertToBinary(value1):
     displayBinary(list2)
 
 def convertToDecimal(bValue):
-    # you would have made sure that the value being passed is in binary (list of 1s and 0s), no need to test here.
-    # for i in bValue:   ##--finish
+    expon = 7
+    holderList = []
 
-    print ("testing")
+    # algorithm to convert binary values into decimal values
+    for i in bValue:
+        if (i == 1):
+            holderList.append(2**expon)
+        elif (i == 0):
+            holderList.append(0)
+        else:
+            print ("problem, shouldn't be here!")
+        expon -= 1
+
+    # call on function to display decimal value
+    displayDecimal(holderList)
 
 # Prints the values of the array without space
 def displayBinary(fullList):
@@ -62,6 +73,9 @@ def displayBinary(fullList):
     for item in (fullList):
         print(item, end='')
     print ("\n")
+
+def displayDecimal(fullList2):
+    print ("Decimal value: ", sum(fullList2))
 
 
 # Function to check if user's value is between 0 to 255
@@ -186,17 +200,12 @@ def checkUserInput(data):
                 if (flag1 == True):
                     for i in userBinary:
                         myList.append(int(i))
-                    print (myList)
                     # myList should already be a list of integers by this point
                     # make sure myList has a length of 8 ints
                     while (len(myList) < 8):
                         myList.insert(0, 0)
-
-                    print (myList, " ", len(myList))
-
                     # convert from binary to decimal.  Finish convertToDecimal function
-                    convertToDecimal(userBinary)
-
+                    convertToDecimal(myList)
                     # End loop by this point
                     iter1 = False
         except:
@@ -245,11 +254,9 @@ if __name__ == "__main__":
                         continue    # just skip. keep loop2 True for reiteration
                     elif (again2 == "no"):
                         loop2 = False
-            elif (choice == 3):         ##### complete section
+            elif (choice == 3):
                 while (loop3):
-                    ### write code here
                     checkUserInput(4)
-
                     print("Convert another value? (enter yes/no) ", end='')
                     again3 = checkUserInput(3)
                     if (again3 == "yes"):
