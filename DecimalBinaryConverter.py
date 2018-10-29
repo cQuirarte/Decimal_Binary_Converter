@@ -9,7 +9,7 @@ class style:
    END = '\033[0m'
 
 # Converts decimal values into binary
-def convert(value1):
+def convertToBinary(value1):
     list1 = list()  # create an empty list
     list2 = list()
     iter = True     # used for iteration
@@ -51,7 +51,9 @@ def convert(value1):
     displayBinary(list2)
 
 def convertToDecimal(bValue):
-    # you would have made sure that the value being passed is in binary, no need to test here.
+    # you would have made sure that the value being passed is in binary (list of 1s and 0s), no need to test here.
+    # for i in bValue:   ##--finish
+
     print ("testing")
 
 # Prints the values of the array without space
@@ -80,6 +82,8 @@ def checkUserInput(data):
     finalData = ""
     iter1 = True
     iter2 = True    # iterator
+
+    counter1 = 0
 
     # option 3 variables
     flag1 = True
@@ -166,21 +170,32 @@ def checkUserInput(data):
                 flag1 = True
                 userBinary = input("Enter the binary value: ")
 
-                for i in userBinary:
-                    if (i == "1" or i == "0"):
-                        continue
-                    else:
-                        print ("Please enter 1s and 0s only")
-                        flag1 = False
-                        break
+                # Test if length of user input is less than 8 AND that only 1s and 0s are used
+                if (len(userBinary) <= 8):
+                    for i in userBinary:
+                        if (i == "1" or i == "0"):
+                            continue
+                        else:
+                            print ("Please enter 1s and 0s only!")
+                            flag1 = False
+                            break
+                else:
+                    flag1 = False
+                    print ("Please enter 8 digits or less for your binary value!")
 
                 if (flag1 == True):
                     for i in userBinary:
                         myList.append(int(i))
                     print (myList)
-                    # Convert binary to decimal
-                    # userBinary should already be a list of integers by this point
-                    # convert(userBinary)
+                    # myList should already be a list of integers by this point
+                    # make sure myList has a length of 8 ints
+                    while (len(myList) < 8):
+                        myList.insert(0, 0)
+
+                    print (myList, " ", len(myList))
+
+                    # convert from binary to decimal.  Finish convertToDecimal function
+                    convertToDecimal(userBinary)
 
                     # End loop by this point
                     iter1 = False
@@ -212,7 +227,7 @@ if __name__ == "__main__":
             if (choice == 1):
                 while (loop1):
                     value = checkUserInput(choice)
-                    convert(value)  # Call on convert() function
+                    convertToBinary(value)  # Call on convert() function
                     print ("Convert another value? (enter yes/no) ", end='')
                     again1 = checkUserInput(3)
                     if (again1 == "yes"):
@@ -223,7 +238,7 @@ if __name__ == "__main__":
                 while (loop2):
                     ### functin checkuserinput should return a value.
                     ipAddy = checkUserInput(2)
-                    convert(ipAddy)
+                    convertToBinary(ipAddy)
                     print("Convert another IP address? (enter yes/no) ", end='')
                     again2 = checkUserInput(3)
                     if (again2 == "yes"):
